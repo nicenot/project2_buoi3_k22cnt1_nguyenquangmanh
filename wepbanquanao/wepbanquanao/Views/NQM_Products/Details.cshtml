@@ -1,0 +1,125 @@
+﻿@model wepbanquanao.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details - WEPBANQUANAO</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+
+        .dl-horizontal dt {
+            font-weight: bold;
+            color: #495057;
+            width: 150px;
+            float: left;
+            clear: left;
+            text-align: right;
+            margin-right: 15px;
+        }
+
+        .dl-horizontal dd {
+            margin-left: 170px;
+            margin-bottom: 10px;
+            overflow-wrap: break-word;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .form-actions .btn {
+                margin: 0 5px;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Details</h2>
+
+        <div>
+            <h4>Product</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.product_name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.product_name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.description)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.description)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.price)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.price) VND
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.stock)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.stock)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.created_at)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.created_at, "{0:dd/MM/yyyy HH:mm:ss}")
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.product_image)
+                </dt>
+                <dd>
+                    <img src="@Url.Content("~/images/" + Model.product_image)" alt="@Model.product_name" style="max-width: 200px; height: auto;" />
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category.category_name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Category.category_name)
+                </dd>
+            </dl>
+        </div>
+
+        <div class="form-actions">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.product_id }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+</body>
+</html>

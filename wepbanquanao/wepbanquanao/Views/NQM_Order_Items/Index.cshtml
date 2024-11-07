@@ -1,0 +1,97 @@
+﻿@model IEnumerable<wepbanquanao.Models.Order_Items>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - WEPBANQUANAO</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('@Url.Content("~/images/4.png")') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .container {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+
+        .btn-create {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .table {
+            background-color: #ffffff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .btn-group .btn {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Index</h2>
+
+        <div class="btn-create">
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        </div>
+
+        <table class="table table-hover table-striped shadow-lg rounded">
+            <thead class="thead-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.quantity)</th>
+                    <th>@Html.DisplayNameFor(model => model.price)</th>
+                    <th>@Html.DisplayNameFor(model => model.Order.order_id)</th>
+                    <th>@Html.DisplayNameFor(model => model.Product.product_name)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.quantity)</td>
+                        <td>@Html.DisplayFor(modelItem => item.price)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Order.order_id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Product.product_name)</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.order_item_id }, new { @class = "btn btn-warning btn-sm" }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.order_item_id }, new { @class = "btn btn-info btn-sm ml-1" }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.order_item_id }, new { @class = "btn btn-danger btn-sm ml-1" }) |
+                                @Html.ActionLink("Mua", "Create", "NQM_Payments", new { area = "" }, new { @class = "btn btn-success btn-sm ml-1" })
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

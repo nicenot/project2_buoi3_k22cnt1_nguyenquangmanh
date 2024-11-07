@@ -1,0 +1,155 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập - Hệ Thống Quản Trị</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('/images/17.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+            .login-container h2 {
+                margin-bottom: 30px;
+                color: #333;
+                text-align: center;
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                color: #555;
+            }
+
+            .form-group input {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+
+                .form-group input:focus {
+                    border-color: #007bff;
+                }
+
+        .form-actions {
+            text-align: center;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+
+        .checkbox label {
+            font-size: 14px;
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+            .social-login button {
+                flex: 1;
+                margin: 0 5px;
+                background-color: #dd4b39;
+                border: none;
+                color: white;
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+                .social-login button.facebook {
+                    background-color: #3b5998;
+                }
+
+        .signup-link {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+            .signup-link a {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+                .signup-link a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Đăng Nhập</h2>
+        <form method="post">
+            <div class="form-group">
+                <label for="user">Username</label>
+                <input type="text" id="user" name="user" class="form-control" required autofocus>
+            </div>
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="remember"> Ghi nhớ đăng nhập
+                </label>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-lg btn-primary">Đăng nhập</button>
+            </div>
+            <div class="social-login">
+                <button type="button" class="google">Google</button>
+                <button type="button" class="facebook">Facebook</button>
+            </div>
+            <div class="signup-link">
+                <span>Không có tài khoản? </span><a href="#">Đăng ký</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,162 @@
+﻿@model IEnumerable<wepbanquanao.Models.Product>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> WEPBANQUANAO</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('@Url.Content("~/images/4.png")') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #6f42c1, #007bff);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+        }
+
+        .navbar-brand {
+            font-size: 1.75rem;
+            font-weight: bold;
+            color: #fff !important;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffe135 !important;
+            transform: scale(1.1);
+        }
+
+        .hero-section {
+            height: 50vh;
+            background: url('@Url.Content("~/images/4.png")') no-repeat center center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-section a {
+            color: black;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .hero-section a:hover {
+            background-color: white;
+            color: #007bff;
+        }
+
+        .product-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .product-card h5 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .product-card p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .product-card .price {
+            font-size: 1.25rem;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        .product-card a {
+            color: white;
+            background-color: #007bff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .product-card a:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div>
+            <h1>Welcome to WEPBANQUANAO</h1>
+            <p>Khám phá những xu hướng mới nhất trong thời trang</p>
+            <a href="@Url.Action("Index", "NQM_Products")">Shop Now</a>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div class="row mt-4">
+            @if (Model != null)
+            {
+                foreach (var product in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="product-card">
+                            <img src="@Url.Content("~/images/" + product.product_image)" alt="@product.product_name">
+                            <h5>@product.product_name</h5>
+                            <p>@product.description</p>
+                            <p class="price">@product.price VND</p>
+                            <a href="@Url.Action("Buy", "NQM_Products", new { id = product.product_id })">Mua ngay</a>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>Không có sản phẩm nào để hiển thị.</p>
+            }
+        </div>
+        <hr />
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

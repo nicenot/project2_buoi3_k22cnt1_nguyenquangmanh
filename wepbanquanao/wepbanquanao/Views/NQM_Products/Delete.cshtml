@@ -1,0 +1,107 @@
+﻿@model wepbanquanao.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete - WEPBANQUANAO</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .delete-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+            .delete-container h2, .delete-container h3 {
+                text-align: center;
+                margin-bottom: 20px;
+                color: #343a40;
+            }
+
+            .delete-container .dl-horizontal dt {
+                font-weight: bold;
+                color: #495057;
+            }
+
+            .delete-container .form-actions {
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .delete-container .btn-default {
+                background-color: #dc3545;
+                border-color: #dc3545;
+                color: #fff;
+            }
+
+                .delete-container .btn-default:hover {
+                    background-color: #c82333;
+                    border-color: #bd2130;
+                }
+
+            .delete-container .btn-link {
+                color: #007bff;
+            }
+
+                .delete-container .btn-link:hover {
+                    color: #0056b3;
+                }
+    </style>
+</head>
+<body>
+    <div class="delete-container">
+        <h2>Xóa sản phẩm</h2>
+        <h3>Bạn có chắc chắn muốn xóa sản phẩm này không?</h3>
+        <div>
+            <h4>Sản phẩm</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>@Html.DisplayNameFor(model => model.product_name)</dt>
+                <dd>@Html.DisplayFor(model => model.product_name)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.description)</dt>
+                <dd>@Html.DisplayFor(model => model.description)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.price)</dt>
+                <dd>@Html.DisplayFor(model => model.price)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.stock)</dt>
+                <dd>@Html.DisplayFor(model => model.stock)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.created_at)</dt>
+                <dd>@Html.DisplayFor(model => model.created_at)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.product_image)</dt>
+                <dd>@Html.DisplayFor(model => model.product_image)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.Category.category_name)</dt>
+                <dd>@Html.DisplayFor(model => model.Category.category_name)</dd>
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Trở lại danh sách", "Index", null, new { @class = "btn btn-link" })
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
